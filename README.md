@@ -23,11 +23,11 @@ CampusFix uses **`gemma-4-26b-a4b-it`** through the official Google Gemini API v
   The multimodal triage call is executed in [`campusfix/triage.py`](file:///campusfix/triage.py):
   ```python
   # campusfix/triage.py line 208
-  raw_response = call_ask_img(str(image_path), prompt, system=TRIAGE_RULE)
+  raw_response = call_ask_img(str(image_path), prompt, system=TRIAGE_RULE)   
   ```
   which calls `gemma_client.ask_with_image(str(image_path), prompt, system=TRIAGE_RULE)`.
 - **Strict Budget & High Efficiency:** Exactly **one Gemma 4 call is made per issue submission**. The Board, issue inspection, "+1" confirmations, resolution, reopening, leaderboard recalculations, and campus statistics all run in deterministic local Python with **zero additional API calls**.
-- **Deterministic Safety Floor:** Python code enforces a hard safety floor that can only raise severity (never lower it), protecting against prompt injections and safeguarding campus hazards.
+- **Deterministic Safety Floor:** Python code enforces a hard safety floor that can only raise severity (never lower it), protecting against prompt injections and also safeguarding campus hazards.
 
 ---
 
